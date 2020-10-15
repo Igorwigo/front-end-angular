@@ -27,23 +27,37 @@
     <!-- Custom styles for this template -->
   </head>
   <body class="text-center">
-    <form class="form-signin">
+    <form class="form-signin" #formLogin="ngForm" (submit)="logar()">
   <img class="mb-4" src="../../../assets/logo-tre.png" alt="" width="72" height="72">
  <app-error-msg></app-error-msg>
-  <h1 class="h3 mb-3 font-weight-normal">ADM grupos</h1>
-  <label  class="sr-only">Usuario</label>
+ <h1 class="h3 mb-3 font-weight-normal"><strong>ADM Sistemas</strong></h1>
   
   
-  <input [(ngModel)]="usuario" name="usuario" type="usuario" id="usuario" class="form-control" placeholder="Usuario" required autofocus>
-  
-  
-  <label for="inputPassword" class="sr-only">Senha</label>
-  <input [(ngModel)]="senha" name="senha"  type="password" id="senha" class="form-control" placeholder="Senha" required>
-  <div class="checkbox mb-3">
-
-  </div>
-  <button class="btn btn-lg btn-primary btn-block" type="submit"(click)="logar()">Entrar</button>
-  
+  <div class="form-group">
+    <input type="text" class="form-control form-control-lg" placeholder="Nome de usuário"
+        name="username" #textUsuario="ngModel" required [(ngModel)]="usuario"
+        [class.is-invalid]="textUsuario.invalid && (textUsuario.dirty || textUsuario.touched)">
+    <div *ngIf="textUsuario.invalid && (textUsuario.dirty || textUsuario.touched)"
+        class="invalid-feedback">
+        <span *ngIf="textUsuario.errors.required">Informe seu nome de usuário</span>
+    </div>
+</div>
+<div class="form-group">
+    <input type="password" class="form-control form-control-lg" placeholder="Senha"
+        name="password" #textSenha="ngModel" required [(ngModel)]="senha"
+        [class.is-invalid]="textSenha.invalid && (textSenha.dirty || textSenha.touched)">
+    <div *ngIf="textSenha.invalid && (textSenha.dirty || textSenha.touched)"
+        class="invalid-feedback">
+        <span *ngIf="textSenha.errors.required">Informe a senha</span>
+    </div>
+</div>
+ 
+<div class="form-group">
+  <button class="btn btn-lg btn-primary btn-block" [disabled]="formLogin.invalid">
+      <i class="fas fa-key" aria-hidden="true"></i>
+      Entrar
+  </button>
+</div>
 </form>
 </body>
 </html>

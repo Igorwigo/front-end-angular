@@ -1,7 +1,7 @@
 import { ApiService } from './../../service/api.service';
 import { ErrorMsgComponent } from './../../compartilhado/error-msg/error-msg.component';
 import { Component, ViewChild } from '@angular/core';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,7 +10,7 @@ import { Component, ViewChild } from '@angular/core';
 export class LoginComponent {
   @ViewChild(ErrorMsgComponent) errorMsgComponent: ErrorMsgComponent;
 
-  constructor(private loginService: ApiService) { }
+  constructor(private loginService: ApiService, private router: Router) { }
 
   usuario = '';
   senha = '';
