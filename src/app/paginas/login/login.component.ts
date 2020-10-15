@@ -32,8 +32,9 @@ export class LoginComponent {
 
 
       if (d['Status']=="ok"){
-
+        localStorage.clear();
         console.log("Login autorizado");
+        localStorage.setItem('Token', d['Token']);
       }
 
     else if (d['Status']=="Credenciais inválidas"){
