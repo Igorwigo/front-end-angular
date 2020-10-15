@@ -29,15 +29,20 @@
   <body class="text-center">
     <form class="form-signin">
   <img class="mb-4" src="../../../assets/logo-tre.png" alt="" width="72" height="72">
+ <app-error-msg></app-error-msg>
   <h1 class="h3 mb-3 font-weight-normal">ADM grupos</h1>
   <label  class="sr-only">Usuario</label>
-  <input  type="usuario" id="inputEmail" class="form-control" placeholder="Usuario" required autofocus>
+  
+  
+  <input [(ngModel)]="usuario" name="usuario" type="usuario" id="usuario" class="form-control" placeholder="Usuario" required autofocus>
+  
+  
   <label for="inputPassword" class="sr-only">Senha</label>
-  <input type="password" id="inputPassword" class="form-control" placeholder="Senha" required>
+  <input [(ngModel)]="senha" name="senha"  type="password" id="senha" class="form-control" placeholder="Senha" required>
   <div class="checkbox mb-3">
 
   </div>
-  <button class="btn btn-lg btn-primary btn-block" type="submit">Entrar</button>
+  <button class="btn btn-lg btn-primary btn-block" type="submit"(click)="logar()">Entrar</button>
   
 </form>
 </body>

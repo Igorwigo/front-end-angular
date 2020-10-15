@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -12,10 +13,29 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
+  private readonly API_ROOT =  `${environment.urlAPI}`;
 
 
-  getLogin(): Observable<Token>{
-    const url =  `{enviroment.urlAPI/auth/login`;
-    return this.http.get<Token>(url);
+/**
+  postLogin(usuario, password) {
+    const data = {"Login": usuario, "Senha": password};
+    return this.http.get('https://viacep.com.br/ws/01001000/json/');
+  }
+*/
+
+  postLogin(usuario, password) {
+    const data = {"Login": usuario, "Senha": password};
+    return this.http.post(this.API_ROOT.concat('auth/login'), data);
+  }
+
+
+
+
+
+
+
+  logout(): void {
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
   }
 }
