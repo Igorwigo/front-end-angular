@@ -14,6 +14,8 @@ export class MenuPrincipalComponent implements OnInit {
   constructor(private apiservice: ApiService,private router: Router) { }
 
   public booleanExibir=false;
+
+
   ngOnInit(): void {
     
     this.apiservice.mainMenu(this.pegaToken).subscribe(
@@ -50,8 +52,10 @@ export class MenuPrincipalComponent implements OnInit {
     }
 
     else if(r['Status']=='token invalido'){
+      console.log("Token invalido")
       this.errorMsgComponent.setError('Sessao expirada!');
       this.booleanExibir=false;
+      this.logout();
     }
 
 
