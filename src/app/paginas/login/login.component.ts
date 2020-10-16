@@ -18,8 +18,7 @@ export class LoginComponent {
  
 
   logar(): void{
-
-    this.loginService.postLogin(this.usuario, this.senha).subscribe(
+       this.loginService.postLogin(this.usuario, this.senha).subscribe(
       dados => {this.tratamento(dados)},
     );
 
@@ -35,13 +34,17 @@ export class LoginComponent {
         localStorage.clear();
         console.log("Login autorizado");
         localStorage.setItem('Token', d['Token']);
+        this.router.navigate(['/protected/MainMenu']);
       }
 
     else if (d['Status']=="Credenciais inválidas"){
       this.errorMsgComponent.setError('Credenciais invalidas!!!');
 
     }
+    else if (d['Status']=="Apenas usuarios ADMs sao permitidos"){
+      this.errorMsgComponent.setError('Apenas ADMs sao permitidos!!!');
 
+    }
 
 }
 }

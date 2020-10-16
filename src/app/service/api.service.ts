@@ -28,14 +28,15 @@ export class ApiService {
     return this.http.post(this.API_ROOT.concat('auth/login'), data);
   }
 
-
-
-
-
-
-
-  logout(): void {
-    localStorage.removeItem('user');
-    localStorage.removeItem('token');
+  mainMenu(token) {
+    const data = {"Token": token};
+    return this.http.post(this.API_ROOT.concat('protected/MainMenu'), data);
   }
+
+
+
+
+
+
+
 }

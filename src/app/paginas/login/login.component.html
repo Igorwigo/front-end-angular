@@ -11,11 +11,12 @@
   <body class="text-center">
     <form class="form-signin" #formLogin="ngForm" (submit)="logar()">
   <img class="mb-4" src="../../../assets/logo-tre.png" alt="" width="72" height="72">
- <app-error-msg></app-error-msg>
+
  <h1 class="h3 mb-3 font-weight-normal"><strong>ADM sistemas</strong></h1>
   
   
   <div class="form-group">
+    <app-error-msg></app-error-msg>
     <input type="text" class="form-control form-control-lg" placeholder="Nome de usuário"
         name="username" #textUsuario="ngModel" required [(ngModel)]="usuario"
         [class.is-invalid]="textUsuario.invalid && (textUsuario.dirty || textUsuario.touched)">
@@ -42,4 +43,5 @@
 </div>
 </form>
 </body>
+
 </html>

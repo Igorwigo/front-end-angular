@@ -7,12 +7,18 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './paginas/login/login.component';
 import { ErrorMsgComponent } from './compartilhado/error-msg/error-msg.component';
+import { MenuPrincipalComponent } from './paginas/menu-principal/menu-principal.component';
+import { PaginaNaoEncontradaComponent } from './paginas/pagina-nao-encontrada/pagina-nao-encontrada.component';
+import { TesteComponent } from './teste/teste.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    ErrorMsgComponent
+    ErrorMsgComponent,
+    MenuPrincipalComponent,
+    PaginaNaoEncontradaComponent,
+    TesteComponent,
   ],
   imports: [
     BrowserModule,
