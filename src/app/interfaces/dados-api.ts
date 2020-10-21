@@ -1,8 +1,7 @@
 export interface DadosApi {
 
-    status: string;
-    token: string;
-
+    Nome:String;
+    Descricao:String;
 
 
 }

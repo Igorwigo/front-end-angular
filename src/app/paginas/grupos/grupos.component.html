@@ -1,0 +1,31 @@
+<div class="container mt-3">
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+        <app-error-msg></app-error-msg>
+        <div class="text-right">
+          <button type="button" class="btn btn-success" routerLink="/lembrete/criar">Novo grupo</button>
+        </div>
+
+      </div>
+    </div>
+    <div class="row mt-3" *ngFor="let nome of listaNome let i = index" >
+      <div class="col-md-8 mx-auto">
+        <div class="card">
+          <div class="card-header">
+
+          </div>
+          <div class="card-body">
+            <strong><p class="card-text">{{nome}}</p></strong>
+            <p class="card-text">{{listaDescricao[i]}}</p>
+          </div>
+          <div class="card-footer">
+            <div class="text-right">
+              <button type="button" class="btn btn-primary btn-sm ml-1" routerLink="/lembrete/editar/{{nome}}">Editar</button>
+              <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleta_do_banco(nome)" >Deletar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

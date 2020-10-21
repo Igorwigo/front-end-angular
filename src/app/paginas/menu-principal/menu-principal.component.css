@@ -1,8 +1,13 @@
-html {
+body,html {
     font-size: 14px;
+    
+    height: 100%;
+    margin-top: .5rem;
+    
   }
   @media (min-width: 768px) {
-    html {
+    body,html {
+
       font-size: 16px;
     }
   }

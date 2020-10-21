@@ -10,6 +10,8 @@ import { ErrorMsgComponent } from './compartilhado/error-msg/error-msg.component
 import { MenuPrincipalComponent } from './paginas/menu-principal/menu-principal.component';
 import { PaginaNaoEncontradaComponent } from './paginas/pagina-nao-encontrada/pagina-nao-encontrada.component';
 import { TesteComponent } from './teste/teste.component';
+import { GruposComponent } from './paginas/grupos/grupos.component';
+import { MenuBaseTemplateComponent } from './paginas/menu-base-template/menu-base-template.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { TesteComponent } from './teste/teste.component';
     MenuPrincipalComponent,
     PaginaNaoEncontradaComponent,
     TesteComponent,
+    GruposComponent,
+    MenuBaseTemplateComponent,
   ],
   imports: [
     BrowserModule,

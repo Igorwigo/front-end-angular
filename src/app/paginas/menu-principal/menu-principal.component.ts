@@ -14,14 +14,14 @@ export class MenuPrincipalComponent implements OnInit {
   constructor(private apiservice: ApiService,private router: Router) { }
 
   public booleanExibir=false;
+  public booleanExibirRetorno=false;
 
 
   ngOnInit(): void {
     
-    this.apiservice.mainMenu(this.pegaToken).subscribe(
+    this.apiservice.verificaToken(this.pegaToken).subscribe(
      retorno => {this.permiteExibir(retorno)},
    );
-    
 
     
   }
@@ -36,26 +36,34 @@ export class MenuPrincipalComponent implements OnInit {
     localStorage.removeItem('Token');
     this.router.navigate(['/login']);
   }
-
+  ir_sistemas(){
+    this.router.navigate(['/protected/grupos']);
+  }
+  ir_usuarios(){
+    //this.router.navigate(['/protected/grupos']);
+  }
   permiteExibir(r): void{
 
     if(r['Status']=='Acesso concedido'){
       console.log("Entoru no acesso")
       this.booleanExibir=true;
+      this.booleanExibirRetorno=false;
 
     }
 
-    else if(r['Status']=='sem permissao'){
+    else if(r['Status']=='Voce nao tem autorizacao!'){
       console.log("Entoru no sem permissao")
       this.errorMsgComponent.setError('sem permissao!');
       this.booleanExibir=false;
+      this.booleanExibirRetorno=true;
     }
 
     else if(r['Status']=='token invalido'){
       console.log("Token invalido")
       this.errorMsgComponent.setError('Sessao expirada!');
       this.booleanExibir=false;
-      this.logout();
+      this.booleanExibirRetorno=true;
+      
     }
 
 

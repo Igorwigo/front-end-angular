@@ -28,15 +28,21 @@ export class ApiService {
     return this.http.post(this.API_ROOT.concat('auth/login'), data);
   }
 
-  mainMenu(token) {
+  verificaToken(token) {
     const data = {"Token": token};
-    return this.http.post(this.API_ROOT.concat('protected/MainMenu'), data);
+    return this.http.post(this.API_ROOT.concat('/verifica/token'), data);
   }
 
 
+  get_todos_grupos() {
+    return this.http.get(this.API_ROOT.concat('/pega/todos/grupo/banco'));
+  }
 
+  deleta_grupo_banco(nome){
+    const data = {"Nome": nome}
+    return this.http.post(this.API_ROOT.concat('/deleta/grupo/banco'), data);
 
-
+  }
 
 
 }

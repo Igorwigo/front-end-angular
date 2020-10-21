@@ -1,3 +1,4 @@
+import { GruposComponent } from './paginas/grupos/grupos.component';
 
 import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -8,6 +9,7 @@ import { PaginaNaoEncontradaComponent } from './paginas/pagina-nao-encontrada/pa
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'protected/MainMenu', component: MenuPrincipalComponent},
+  {path: 'protected/grupos', component: GruposComponent},
 
 
   { path: '', redirectTo: '/login', pathMatch: 'full' },
