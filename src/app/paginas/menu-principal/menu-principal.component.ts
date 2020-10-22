@@ -13,7 +13,7 @@ export class MenuPrincipalComponent implements OnInit {
 
   constructor(private apiservice: ApiService,private router: Router) { }
 
-  public booleanExibir=false;
+  booleanExibir=false;
   public booleanExibirRetorno=false;
 
 

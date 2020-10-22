@@ -1,0 +1,70 @@
+<div class="container mt-3">
+    <div class="row">
+      <div class="col-md-8 mx-auto">
+        <app-error-msg></app-error-msg>
+        <div class="card">
+          <div class="card-header">
+            Criar
+          </div>
+          <div class="card-body">
+           
+            <form #f="ngForm" (ngSubmit)="editarGrupo()">
+                <div class="form-group">
+                  <label for="conteudo">Nome do Grupo</label>
+                  <input
+                    class="form-control" 
+                    id="nome_do_grupo" 
+                    rows="2" 
+                    placeholder="Nome" name="conteudo"
+                    #conteudo="ngModel" 
+                    [(ngModel)]="nome" 
+                    [class.is-invalid]="!conteudo.valid && conteudo.touched"
+                    required>
+                  
+                  <div *ngIf="!conteudo.valid && conteudo.touched" class="text-danger">
+                   Digite o nome
+                  </div>
+                </div>
+            
+            
+                <div class="form-group">
+                    <label for="conteudo">Descricao do grupo</label>
+                    <textarea 
+                      class="form-control" 
+                      id="descricao_do_grupo" 
+                      rows="2" 
+                      placeholder="Descricao do grupo" name="conteudo"
+                      #conteudo="ngModel" 
+                      [(ngModel)]="descricao" 
+                      [class.is-invalid]="!conteudo.valid && conteudo.touched"
+                      required>
+                    </textarea>
+                    <div *ngIf="!conteudo.valid && conteudo.touched" class="text-danger">
+                     Digite uma descricao do grupo
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="conteudo">Nome do grupo no AD</label>
+                    <input
+                      class="form-control" 
+                      id="descricao_do_grupo" 
+                      rows="2" 
+                      placeholder="nome do grupo no AD" name="conteudo"
+                      #conteudo="ngModel" 
+                      [(ngModel)]="nome_no_ad" 
+                      [class.is-invalid]="!conteudo.valid && conteudo.touched"
+                      required>
+                    <div *ngIf="!conteudo.valid && conteudo.touched" class="text-danger">
+                     Digite o nome do grupo no AD
+                    </div>
+                  </div>
+            
+            
+                <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Salvar</button>
+              </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

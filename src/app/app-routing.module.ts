@@ -1,3 +1,5 @@
+import { EditarGrupoComponent } from './paginas/editar-grupo/editar-grupo.component';
+import { CriarGruposComponent } from './paginas/criar-grupos/criar-grupos.component';
 import { GruposComponent } from './paginas/grupos/grupos.component';
 
 import { NgModule, Component } from '@angular/core';
@@ -10,6 +12,10 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'protected/MainMenu', component: MenuPrincipalComponent},
   {path: 'protected/grupos', component: GruposComponent},
+  {path: 'protected/criar/grupo', component: CriarGruposComponent},
+  {path: 'protected/editar/grupo', component: EditarGrupoComponent},
+
+
 
 
   { path: '', redirectTo: '/login', pathMatch: 'full' },

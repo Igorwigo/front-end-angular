@@ -12,6 +12,8 @@ import { PaginaNaoEncontradaComponent } from './paginas/pagina-nao-encontrada/pa
 import { TesteComponent } from './teste/teste.component';
 import { GruposComponent } from './paginas/grupos/grupos.component';
 import { MenuBaseTemplateComponent } from './paginas/menu-base-template/menu-base-template.component';
+import { CriarGruposComponent } from './paginas/criar-grupos/criar-grupos.component';
+import { EditarGrupoComponent } from './paginas/editar-grupo/editar-grupo.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { MenuBaseTemplateComponent } from './paginas/menu-base-template/menu-bas
     TesteComponent,
     GruposComponent,
     MenuBaseTemplateComponent,
+    CriarGruposComponent,
+    EditarGrupoComponent,
   ],
   imports: [
     BrowserModule,

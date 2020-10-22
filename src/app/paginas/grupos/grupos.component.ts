@@ -14,7 +14,8 @@ export class GruposComponent implements OnInit {
   constructor(private apiservice: ApiService,private router: Router) { }
   public listaNome = [];
   public listaDescricao=[];
-
+  booleanExibir=false;
+  //nome_para_pesquisa="";
   ngOnInit(): void {
 
     this.get_todos_banco();
@@ -24,7 +25,7 @@ export class GruposComponent implements OnInit {
 
   get_todos_banco(){
     this.apiservice.get_todos_grupos().subscribe(
-      retorno => {this.lista_todos(retorno)},
+      (retorno)=> {this.lista_todos(retorno)},
       ()=>this.errorMsgComponent.setError('Falha ao buscar os grupos'),
     );
 
@@ -32,6 +33,7 @@ export class GruposComponent implements OnInit {
 
 
   lista_todos(r){
+
     if (r["Status"]=="Banco vazio"){
       this.errorMsgComponent.setError('Nao tem grupos para exibir');
 
@@ -45,11 +47,49 @@ export class GruposComponent implements OnInit {
     }
 
   }
+  
+  deleta_do_banco(nome:String){
 
-  deleta_do_banco(nome){
-    this.apiservice.deleta_grupo_banco(nome).subscribe(
-      () => { this.get_todos_banco()},
-    );
+    const r = window.confirm("Tem certeza disto??");
+    if (r){
+      this.apiservice.deleta_grupo_banco(nome).subscribe(
+        () => {this.get_todos_banco() },
+        () =>{this.errorMsgComponent.setError('Falha ao deletar o Grupo');});
 
-  }
+    }
+    else{
+      window.close();
+      }
+
+    }
+
+    atualizarBanco(nome:String){
+
+
+
+      
+    }
+    // pesquisa_especifico(){
+
+    // this.apiservice.pesqusa_nome_especifico(this.nome_para_pesquisa).subscribe(
+    //   retorno => {this.auxilia_pesquisa(retorno)},
+    //   ()=>this.errorMsgComponent.setError('Falha ao buscar os grupos'),
+    // );
+
+    // }
+
+    // auxilia_pesquisa(r){
+      
+      
+    //   this.listaNome=r["Nome"]
+    //   this.listaDescricao=r["Descricao"];
+      
+
+
+    // }
+    logout(): void {
+      localStorage.removeItem('Token');
+      this.router.navigate(['/login']);
+    }
+
 }
