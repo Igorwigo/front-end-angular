@@ -1,6 +1,6 @@
 <div>
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-  <h5 class="my-0 mr-md-auto font-weight-normal">Adm Sistemas</h5>
+  <h5 class="my-0 mr-md-auto font-weight-normal">Adm Sistemas</h5 >
   <nav class="my-2 my-md-0 mr-md-3">
 
   </nav>
@@ -33,7 +33,7 @@
           </div>
           <div class="card-footer">
             <div class="text-right">
-              <button type="button" class="btn btn-primary btn-sm ml-1" (click)="atualizarBanco(nome)" >Editar</button>
+              <button type="button" class="btn btn-primary btn-sm ml-1" routerLink="/protected/editar/grupo/{{nome}}" >Editar</button>
               <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleta_do_banco(nome)" >Deletar</button>
             </div>
           </div>

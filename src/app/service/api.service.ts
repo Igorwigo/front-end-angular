@@ -38,23 +38,23 @@ export class ApiService {
     return this.http.get(this.API_ROOT.concat('/pega/todos/grupo/banco'));
   }
 
-  deleta_grupo_banco(nome){ 
+  deleta_grupo_banco(nome:String){ 
     const data = {"Nome": nome}
     return this.http.post(this.API_ROOT.concat('/deleta/grupo/banco'), data);
 
   }
 
-  pesqusa_nome_especifico(nome){
+  pesqusa_grupo_especifico(nome:String){
     const data = {"Nome": nome}
     return this.http.post(this.API_ROOT.concat('/pesquisa/especifico'), data);
   }
 
-  criaGrupo(nome,descricao,nome_no_ad){
+  criaGrupo(nome:String,descricao:String,nome_no_ad:String){
   const data = {"Nome": nome,"Descricao":descricao,"Nome_no_AD":nome_no_ad}
   return this.http.post(this.API_ROOT.concat('/cria/grupo'), data);
   }
 
-  editarGrupo(nomeAntigo,nomeNovo,descricao_nova,nome_do_grupo_no_AD_nova){
+  atualizaGrupo(nomeAntigo:String,nomeNovo:String,descricao_nova:String,nome_do_grupo_no_AD_nova:String){
     const data = {"NomeAntigo": nomeAntigo,"NomeNovo":nomeNovo,"DescricaoNova":descricao_nova,"Nome_no_AD_novo":nome_do_grupo_no_AD_nova}
     return this.http.post(this.API_ROOT.concat('/editar/grupo'), data);
     }

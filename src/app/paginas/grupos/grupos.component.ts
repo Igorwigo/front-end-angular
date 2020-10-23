@@ -63,12 +63,6 @@ export class GruposComponent implements OnInit {
 
     }
 
-    atualizarBanco(nome:String){
-
-
-
-      
-    }
     // pesquisa_especifico(){
 
     // this.apiservice.pesqusa_nome_especifico(this.nome_para_pesquisa).subscribe(

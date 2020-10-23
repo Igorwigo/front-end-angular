@@ -16,10 +16,28 @@ export class CriarGruposComponent {
 
   constructor(private apiservice: ApiService,private router: Router) { }
 
-  criaGrupo(){      this.apiservice.criaGrupo(this.nome,this.descricao,this.nome_no_ad).subscribe(
-    () => {this.router.navigate(['/protected/grupos']); },
-    () =>{this.errorMsgComponent.setError('Falha ao criar o grupo');});}
+  criaGrupo(){  
 
+    this.apiservice.criaGrupo(this.nome, this.descricao, this.nome_no_ad).subscribe(
+      (retorno)=> {this.tratamento(retorno)},
+    );
+    }
+
+
+
+    tratamento(r){
+
+      if (r["Status"]=="Ocorreu um erro ao inserir"){
+
+        this.errorMsgComponent.setError('Falha ao criar o Grupo verifique o nome e tente novamente')
+      }
+
+      else if(r["Status"]=="Grupo Criado"){
+        this.router.navigate(['/protected/grupos'])
+
+      }
+
+    }
 
     logout(): void {
       localStorage.removeItem('Token');
