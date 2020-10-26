@@ -11,7 +11,6 @@ import { MenuPrincipalComponent } from './paginas/menu-principal/menu-principal.
 import { PaginaNaoEncontradaComponent } from './paginas/pagina-nao-encontrada/pagina-nao-encontrada.component';
 import { TesteComponent } from './teste/teste.component';
 import { GruposComponent } from './paginas/grupos/grupos.component';
-import { MenuBaseTemplateComponent } from './paginas/menu-base-template/menu-base-template.component';
 import { CriarGruposComponent } from './paginas/criar-grupos/criar-grupos.component';
 import { EditarGrupoComponent } from './paginas/editar-grupo/editar-grupo.component';
 
@@ -24,7 +23,6 @@ import { EditarGrupoComponent } from './paginas/editar-grupo/editar-grupo.compon
     PaginaNaoEncontradaComponent,
     TesteComponent,
     GruposComponent,
-    MenuBaseTemplateComponent,
     CriarGruposComponent,
     EditarGrupoComponent,
   ],

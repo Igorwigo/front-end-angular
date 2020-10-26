@@ -30,16 +30,18 @@ export class ApiService {
 
   verificaToken(token) {
     const data = {"Token": token};
-    return this.http.post(this.API_ROOT.concat('/verifica/token'), data);
+    return this.http.post(this.API_ROOT.concat('/verifica/menu/principal'), data);
   }
 
 
-  get_todos_grupos() {
-    return this.http.get(this.API_ROOT.concat('/pega/todos/grupo/banco'));
+  get_todos_grupos(token) {
+
+    const data = {"Token": token};
+    return this.http.post(this.API_ROOT.concat('pega/todos/grupo/banco'), data);
   }
 
-  deleta_grupo_banco(nome:String){ 
-    const data = {"Nome": nome}
+  deleta_grupo_banco(nome:String,token){ 
+    const data = {"Nome": nome,"Token":token}
     return this.http.post(this.API_ROOT.concat('/deleta/grupo/banco'), data);
 
   }

@@ -14,7 +14,7 @@ export class MenuPrincipalComponent implements OnInit {
   constructor(private apiservice: ApiService,private router: Router) { }
 
   booleanExibir=false;
-  public booleanExibirRetorno=false;
+  booleanExibirRetorno=false;
 
 
   ngOnInit(): void {
@@ -45,29 +45,21 @@ export class MenuPrincipalComponent implements OnInit {
   permiteExibir(r): void{
 
     if(r['Status']=='Acesso concedido'){
-      console.log("Entoru no acesso")
       this.booleanExibir=true;
       this.booleanExibirRetorno=false;
 
     }
 
     else if(r['Status']=='Voce nao tem autorizacao!'){
-      console.log("Entoru no sem permissao")
-      this.errorMsgComponent.setError('sem permissao!');
       this.booleanExibir=false;
       this.booleanExibirRetorno=true;
     }
 
-    else if(r['Status']=='token invalido'){
-      console.log("Token invalido")
-      this.errorMsgComponent.setError('Sessao expirada!');
+    else if(r['Status']=='Token invalido'){
       this.booleanExibir=false;
       this.booleanExibirRetorno=true;
       
     }
-
-
-
 
   }
 

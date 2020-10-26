@@ -1,52 +1,45 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
+<div class="text-center">
 
-    <title>Login Template</title>
-    
-  </head>
-  <body class="text-center">
-    <form class="form-signin" #formLogin="ngForm" (submit)="logar()">
-  <img class="mb-4" src="../../../assets/logo-tre.png" alt="" width="72" height="72">
+  <form class="form-signin" #formLogin="ngForm" (submit)="logar()">
+<img class="mb-4" src="../../../assets/logo-tre.png" alt="" width="72" height="72">
 
- <h1 class="h3 mb-3 font-weight-normal"><strong>ADM sistemas</strong></h1>
-  
-  
-  <div class="form-group">
-    <app-error-msg></app-error-msg>
-    <input type="text" class="form-control form-control-lg" placeholder="Nome de usuário"
-        name="username" #textUsuario="ngModel" required [(ngModel)]="usuario"
-        [class.is-invalid]="textUsuario.invalid && (textUsuario.dirty || textUsuario.touched)">
-    <div *ngIf="textUsuario.invalid && (textUsuario.dirty || textUsuario.touched)"
-        class="invalid-feedback">
-        <span *ngIf="textUsuario.errors.required">Informe seu nome de usuário</span>
-    </div>
-</div>
+<link href="../login/login.component.css" rel="stylesheet">
+<h1 class="h3 mb-3 font-weight-normal"><strong>ADM sistemas</strong></h1>
+
+
 <div class="form-group">
-    <input type="password" class="form-control form-control-lg" placeholder="Senha"
-        name="password" #textSenha="ngModel" required [(ngModel)]="senha"
-        [class.is-invalid]="textSenha.invalid && (textSenha.dirty || textSenha.touched)">
-    <div *ngIf="textSenha.invalid && (textSenha.dirty || textSenha.touched)"
-        class="invalid-feedback">
-        <span *ngIf="textSenha.errors.required">Informe a senha</span>
-    </div>
-</div>
- 
-<div class="form-group">
-  <button class="btn btn-lg btn-primary btn-block" [disabled]="formLogin.invalid">
-      <i class="fas fa-key" aria-hidden="true"></i>
-      Entrar
-  </button>
-
-  <footer>
-  <div class="">
-    <small class="text-muted">&copy; SEGIT 2020</small>
+  <app-error-msg></app-error-msg>
+  <input type="text" class="form-control form-control-lg" placeholder="Nome de usuário"
+      name="username" #textUsuario="ngModel" required [(ngModel)]="usuario"
+      [class.is-invalid]="textUsuario.invalid && (textUsuario.dirty || textUsuario.touched)">
+  <div *ngIf="textUsuario.invalid && (textUsuario.dirty || textUsuario.touched)"
+      class="invalid-feedback">
+      <span *ngIf="textUsuario.errors.required">Informe seu nome de usuário</span>
   </div>
-</footer>
+</div>
+<div class="form-group">
+  <input type="password" class="form-control form-control-lg" placeholder="Senha"
+      name="password" #textSenha="ngModel" required [(ngModel)]="senha"
+      [class.is-invalid]="textSenha.invalid && (textSenha.dirty || textSenha.touched)">
+  <div *ngIf="textSenha.invalid && (textSenha.dirty || textSenha.touched)"
+      class="invalid-feedback">
+      <span *ngIf="textSenha.errors.required">Informe a senha</span>
+  </div>
+</div>
+
+<div class="form-group">
+<button class="btn btn-lg btn-primary btn-block" [disabled]="formLogin.invalid">
+    <i class="fas fa-key" aria-hidden="true"></i>
+    Entrar
+</button>
+
+
 
 </div>
+<footer>
+<div class="">
+  <small class="text-muted">&copy; SEGIT 2020</small>
+</div>
+</footer>
 </form>
-</body>
-
-</html>
+</div>

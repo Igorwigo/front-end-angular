@@ -15,36 +15,77 @@ export class GruposComponent implements OnInit {
   public listaNome = [];
   public listaDescricao=[];
   booleanExibir=false;
+  booleanExibirRetorno=false;
+
+  pegatoken="";
+  
   //nome_para_pesquisa="";
   ngOnInit(): void {
-
     this.get_todos_banco();
   }
+
+ 
+
+  permiteExibir(r): void{
+
+
+  }
+
+
+
+
+
+
 
 
 
   get_todos_banco(){
-    this.apiservice.get_todos_grupos().subscribe(
+    this.apiservice.get_todos_grupos(this.pegaToken()).subscribe(
       (retorno)=> {this.lista_todos(retorno)},
       ()=>this.errorMsgComponent.setError('Falha ao buscar os grupos'),
     );
-
   }
 
 
-  lista_todos(r){
-
-    if (r["Status"]=="Banco vazio"){
-      this.errorMsgComponent.setError('Nao tem grupos para exibir');
-
+  lista_todos(r){    
+    if(r["Status"]=="Banco vazio"){
+      this.booleanExibir=true;
+      this.booleanExibirRetorno=false;
+      this.setaError("CARALHO");
+      console.log("ENTRANDO AQUI",5)
     }
-    else{
-
+    
+    else if(r['Status']=='Acesso concedido' ){
+      this.booleanExibir=true;
+      this.booleanExibirRetorno=false;
       this.listaNome=r["Nomes"];
       this.listaDescricao=r["Descricoes"];
-      
-  
+
+
+
+      console.log("ENTRANDO AQUI",1)
+
+
+
     }
+
+    else if(r['Status']=='Voce nao tem autorizacao!'){
+      this.booleanExibir=false;
+      this.booleanExibirRetorno=true;
+      console.log("ENTRANDO AQUI",2)
+    }
+
+    else if(r['Status']=='Token invalido'){
+      this.booleanExibir=false;
+      this.booleanExibirRetorno=true;
+      console.log("ENTRANDO AQUI",4)
+    }
+
+    console.log("EXIBIIIIIIIIII",this.booleanExibir)
+
+
+    console.log("RETORNOOOOOOO",this.booleanExibirRetorno)
+
 
   }
   
@@ -52,38 +93,54 @@ export class GruposComponent implements OnInit {
 
     const r = window.confirm("Tem certeza disto??");
     if (r){
-      this.apiservice.deleta_grupo_banco(nome).subscribe(
-        () => {this.get_todos_banco() },
-        () =>{this.errorMsgComponent.setError('Falha ao deletar o Grupo');});
+      this.apiservice.deleta_grupo_banco(nome,this.pegaToken()).subscribe(
+        retorno => {this.trataDelecao(retorno) },);
 
     }
+
     else{
       window.close();
       }
 
     }
 
-    // pesquisa_especifico(){
+    trataDelecao(r){
 
-    // this.apiservice.pesqusa_nome_especifico(this.nome_para_pesquisa).subscribe(
-    //   retorno => {this.auxilia_pesquisa(retorno)},
-    //   ()=>this.errorMsgComponent.setError('Falha ao buscar os grupos'),
-    // );
+      if(r['Status']=='Acesso concedido' && r['Msg']=='Excluido'){
+        this.get_todos_banco();
 
-    // }
+      }
+  
+      else if(r['Status']=='Voce nao tem autorizacao!'){
+        this.errorMsgComponent.setError('Voce nao tem autorizacao! faca login novamente');
+      }
+  
+      else if(r['Status']=='Token invalido'){
+        this.errorMsgComponent.setError('Token invalido! faca login novamente!');
+        
+      }
+      else{
+        this.errorMsgComponent.setError('Nao excluido!');
+      }
 
-    // auxilia_pesquisa(r){
-      
-      
-    //   this.listaNome=r["Nome"]
-    //   this.listaDescricao=r["Descricao"];
-      
+
+    }
 
 
-    // }
+
     logout(): void {
       localStorage.removeItem('Token');
       this.router.navigate(['/login']);
     }
 
+    pegaToken(){
+
+      this.pegatoken=localStorage.getItem('Token');
+      return this.pegatoken
+
+    }
+
+setaError(error){
+  this.errorMsgComponent.setError(error);
+}
 }
