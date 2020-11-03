@@ -9,10 +9,13 @@ import { LoginComponent } from './paginas/login/login.component';
 import { ErrorMsgComponent } from './compartilhado/error-msg/error-msg.component';
 import { MenuPrincipalComponent } from './paginas/menu-principal/menu-principal.component';
 import { PaginaNaoEncontradaComponent } from './paginas/pagina-nao-encontrada/pagina-nao-encontrada.component';
-import { TesteComponent } from './teste/teste.component';
+
 import { GruposComponent } from './paginas/grupos/grupos.component';
 import { CriarGruposComponent } from './paginas/criar-grupos/criar-grupos.component';
 import { EditarGrupoComponent } from './paginas/editar-grupo/editar-grupo.component';
+import { NavBarComponent } from './compartilhado/nav-bar/nav-bar.component';
+import { FooterComponent } from './compartilhado/footer/footer.component';
+import { SessaoExpiradaComponent } from './compartilhado/sessao-expirada/sessao-expirada.component';
 
 @NgModule({
   declarations: [
@@ -21,10 +24,12 @@ import { EditarGrupoComponent } from './paginas/editar-grupo/editar-grupo.compon
     ErrorMsgComponent,
     MenuPrincipalComponent,
     PaginaNaoEncontradaComponent,
-    TesteComponent,
     GruposComponent,
     CriarGruposComponent,
     EditarGrupoComponent,
+    NavBarComponent,
+    FooterComponent,
+    SessaoExpiradaComponent,
   ],
   imports: [
     BrowserModule,

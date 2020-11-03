@@ -30,7 +30,7 @@ export class ApiService {
 
   verificaToken(token) {
     const data = {"Token": token};
-    return this.http.post(this.API_ROOT.concat('/verifica/menu/principal'), data);
+    return this.http.post(this.API_ROOT.concat('verifica/token'), data);
   }
 
 
@@ -51,9 +51,9 @@ export class ApiService {
     return this.http.post(this.API_ROOT.concat('/pesquisa/especifico'), data);
   }
 
-  criaGrupo(nome:String,descricao:String,nome_no_ad:String){
-  const data = {"Nome": nome,"Descricao":descricao,"Nome_no_AD":nome_no_ad}
-  return this.http.post(this.API_ROOT.concat('/cria/grupo'), data);
+  criaGrupo(nome:String,descricao:String,nome_no_ad:String,token){
+  const data = {"Nome": nome,"Descricao":descricao,"Nome_no_AD":nome_no_ad,"Token":token}
+  return this.http.post(this.API_ROOT.concat('cria/grupo'), data);
   }
 
   atualizaGrupo(nomeAntigo:String,nomeNovo:String,descricao_nova:String,nome_do_grupo_no_AD_nova:String){

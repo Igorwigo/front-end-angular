@@ -52,17 +52,7 @@
     margin: 0;
   }
   
-  .notfound-search {
-    position: relative;
-    padding-right: 123px;
-    max-width: 420px;
-    width: 100%;
-    margin: 30px auto 22px;
-  }
-  
-
-
-  
+ 
   .notfound a {
     font-family: 'Raleway', sans-serif;
     display: inline-block;

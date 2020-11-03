@@ -1,12 +1,5 @@
 <div *ngIf="booleanExibir">
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
-  <h5 class="my-0 mr-md-auto font-weight-normal">Adm Sistemas</h5 >
-  <nav class="my-2 my-md-0 mr-md-3">
-
-  </nav>
-  <a (click)="logout()" class="btn btn-outline-primary" href="#">Sair</a>
- 
-</div>
+<app-nav-bar></app-nav-bar>
 
 <div class="container mt-3">
     <div class="row">
@@ -44,12 +37,6 @@
 </div>
 <div *ngIf="booleanExibirRetorno === true" class=" text-center">
 
-  <h1>Secao expirada ou acesso nao concedido por favor retorne para a pagina de login</h1>
-  <button class="btn btn-lg btn-primary "(click)=" logout()">
-    <i class="fas fa-key" aria-hidden="true"></i>
-    Fazer login novamente
-</button>
-
-
+  <app-sessao-expirada></app-sessao-expirada>
 
 </div>

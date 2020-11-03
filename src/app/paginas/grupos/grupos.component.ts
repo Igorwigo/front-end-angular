@@ -26,19 +26,6 @@ export class GruposComponent implements OnInit {
 
  
 
-  permiteExibir(r): void{
-
-
-  }
-
-
-
-
-
-
-
-
-
   get_todos_banco(){
     this.apiservice.get_todos_grupos(this.pegaToken()).subscribe(
       (retorno)=> {this.lista_todos(retorno)},
@@ -51,8 +38,7 @@ export class GruposComponent implements OnInit {
     if(r["Status"]=="Banco vazio"){
       this.booleanExibir=true;
       this.booleanExibirRetorno=false;
-      this.setaError("CARALHO");
-      console.log("ENTRANDO AQUI",5)
+      window.confirm("Banco vazio");
     }
     
     else if(r['Status']=='Acesso concedido' ){
@@ -60,32 +46,17 @@ export class GruposComponent implements OnInit {
       this.booleanExibirRetorno=false;
       this.listaNome=r["Nomes"];
       this.listaDescricao=r["Descricoes"];
-
-
-
-      console.log("ENTRANDO AQUI",1)
-
-
-
     }
 
     else if(r['Status']=='Voce nao tem autorizacao!'){
       this.booleanExibir=false;
       this.booleanExibirRetorno=true;
-      console.log("ENTRANDO AQUI",2)
     }
 
     else if(r['Status']=='Token invalido'){
       this.booleanExibir=false;
       this.booleanExibirRetorno=true;
-      console.log("ENTRANDO AQUI",4)
     }
-
-    console.log("EXIBIIIIIIIIII",this.booleanExibir)
-
-
-    console.log("RETORNOOOOOOO",this.booleanExibirRetorno)
-
 
   }
   

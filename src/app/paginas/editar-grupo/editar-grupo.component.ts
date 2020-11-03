@@ -8,12 +8,14 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './editar-grupo.component.html',
   styleUrls: ['./editar-grupo.component.css']
 })
-export class EditarGrupoComponent {
+export class EditarGrupoComponent implements OnInit{
   nomeNovo = "";
   descricaoNova = "";
   nome_ad_novo = "";
 
-
+  pegatoken="";
+  booleanExibir=false;
+  booleanExibirRetorno=false;
 
 
   nomeAntigo="";
@@ -23,7 +25,13 @@ export class EditarGrupoComponent {
   @ViewChild(ErrorMsgComponent) errorMsgComponent: ErrorMsgComponent;
 
   
-  
+  ngOnInit(): void {
+    this.apiservice.verificaToken(this.pegaToken()).subscribe(
+      retorno => {this.permiteExibir(retorno)},
+    );
+ 
+
+  }
   
   constructor(private apiservice:ApiService, private activatedRoute: ActivatedRoute, private router: Router) {
     this.getGrupo(this.activatedRoute.snapshot.params.nome);
@@ -62,5 +70,33 @@ export class EditarGrupoComponent {
     localStorage.removeItem('Token');
     this.router.navigate(['/login']);
   }
-  
+  pegaToken(){
+
+    this.pegatoken=localStorage.getItem('Token');
+    return this.pegatoken
+
+  }
+
+  permiteExibir(r): void{
+
+    if(r['Status']=='Acesso concedido'){
+      this.booleanExibir=true;
+      this.booleanExibirRetorno=false;
+
+    }
+
+    else if(r['Status']=='Voce nao tem autorizacao!'){
+      this.booleanExibir=false;
+      this.booleanExibirRetorno=true;
+    }
+
+    else if(r['Status']=='Token invalido'){
+      this.booleanExibir=false;
+      this.booleanExibirRetorno=true;
+      
+    }
+
+  }
+
+
 }
