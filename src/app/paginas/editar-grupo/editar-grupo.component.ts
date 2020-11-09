@@ -40,7 +40,7 @@ export class EditarGrupoComponent implements OnInit{
 
   
     getGrupo(nome:String){
-      this.apiservice.pesqusa_grupo_especifico(nome).subscribe(
+      this.apiservice.pesquisa_grupo_especifico(nome).subscribe(
         (retorno)=> {this.atribui_as_variaveis(retorno)},
         ()=>this.errorMsgComponent.setError('Falha ao buscar o grupo'),
       );
