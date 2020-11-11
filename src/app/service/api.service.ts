@@ -46,8 +46,8 @@ export class ApiService {
 
   }
 
-  pesquisa_grupo_especifico(nome:String){
-    const data = {"Nome": nome}
+  pesquisa_grupo_especifico(nome:String,token){
+    const data = {"Nome": nome,"Token":token}
     return this.http.post(this.API_ROOT.concat('pesquisa/especifico'), data);
   }
 
@@ -56,8 +56,8 @@ export class ApiService {
   return this.http.post(this.API_ROOT.concat('cria/grupo'), data);
   }
 
-  atualizaGrupo(nomeAntigo:String,nomeNovo:String,descricao_nova:String,nome_do_grupo_no_AD_nova:String){
-    const data = {"NomeAntigo": nomeAntigo,"NomeNovo":nomeNovo,"DescricaoNova":descricao_nova,"Nome_no_AD_novo":nome_do_grupo_no_AD_nova}
+  atualizaGrupo(token,nomeAntigo:String,nomeNovo:String,descricao_nova:String,nome_do_grupo_no_AD_nova:String){
+    const data = {"NomeAntigo": nomeAntigo,"NomeNovo":nomeNovo,"DescricaoNova":descricao_nova,"Nome_no_AD_novo":nome_do_grupo_no_AD_nova,"Token":token}
     return this.http.post(this.API_ROOT.concat('editar/grupo'), data);
     }
   

@@ -40,7 +40,7 @@ export class EditarGrupoComponent implements OnInit{
 
   
     getGrupo(nome:String){
-      this.apiservice.pesquisa_grupo_especifico(nome).subscribe(
+      this.apiservice.pesquisa_grupo_especifico(nome,this.pegaToken()).subscribe(
         (retorno)=> {this.atribui_as_variaveis(retorno)},
         ()=>this.errorMsgComponent.setError('Falha ao buscar o grupo'),
       );
@@ -59,7 +59,7 @@ export class EditarGrupoComponent implements OnInit{
 
     const r = window.confirm("Tem certeza que deseja salvar?");
     if (r){
-    this.apiservice.atualizaGrupo(this.nomeAntigo,this.nomeNovo,this.descricaoNova,this.nome_ad_novo).subscribe(
+    this.apiservice.atualizaGrupo(this.pegaToken(),this.nomeAntigo,this.nomeNovo,this.descricaoNova,this.nome_ad_novo).subscribe(
       () => { this.router.navigateByUrl('/protected/grupos'); },
       ()=>this.errorMsgComponent.setError('Falha ao atualizar o grupo'),
     );

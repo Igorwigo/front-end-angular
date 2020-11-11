@@ -47,11 +47,14 @@ export class CriarGruposComponent implements OnInit{
 
       }
 
-      else if(r["Status"]=="Voce nao tem autorizacao!"){
+      else if(r["Status"]=="sem permissao"){
         this.errorMsgComponent.setError('Falha ao criar o Grupo secao expirada')
 
       }
+      else if(r["Status"]=="Grupo nao encontrado no AD"){
+        this.errorMsgComponent.setError('Grupo nao encontrado no AD');
 
+      }
     }
 
 
