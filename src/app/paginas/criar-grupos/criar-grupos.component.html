@@ -11,53 +11,38 @@
           <div class="card-body">
            
             <form #f="ngForm" (ngSubmit)="criaGrupo()">
-                <div class="form-group">
-                  <label for="conteudo">Nome do Grupo</label>
-                  <input
-                    class="form-control" 
-                    id="nome_do_grupo" 
-                    rows="2" 
-                    placeholder="Nome" name="conteudo"
-                    #conteudo="ngModel" 
-                    [(ngModel)]="nome" 
-                    [class.is-invalid]="!conteudo.valid && conteudo.touched"
-                    required>
-                  
-                  <div *ngIf="!conteudo.valid && conteudo.touched" class="text-danger">
-                   Digite o nome
-                  </div>
+              <div class="form-group">
+                <label for="nome">Nome do grupo</label>
+                <input type="nome" class="form-control " placeholder="nome"
+                    name="nome" #textNome="ngModel" required [(ngModel)]="nome"
+                    [class.is-invalid]="textNome.invalid && (textNome.dirty || textNome.touched)">
+                <div *ngIf="textNome.invalid && (textNome.dirty || textNome.touched)"
+                    class="invalid-feedback">
+                    <span *ngIf="textNome.errors.required">Informe o nome do Grupo</span>
                 </div>
-            
-            
-                <div class="form-group">
-                    <label for="conteudo">Descricao do grupo</label>
-                    <textarea 
-                      class="form-control" 
-                      id="descricao_do_grupo" 
-                      rows="2" 
-                      placeholder="Descricao do grupo" name="conteudo"
-                      #conteudo="ngModel" 
-                      [(ngModel)]="descricao" 
-                      [class.is-invalid]="!conteudo.valid && conteudo.touched"
-                      required>
-                    </textarea>
-                    <div *ngIf="!conteudo.valid && conteudo.touched" class="text-danger">
-                     Digite uma descricao do grupo
+              </div>
+                 
+
+                  <div class="form-group">
+                    <label for="descricao">Descricao do grupo</label>
+                    <textarea maxlength="535" type="descricao" class="form-control " placeholder="Descricao"
+                        name="descricao" #textDescricao="ngModel" required [(ngModel)]="descricao"
+                        [class.is-invalid]="textDescricao.invalid && (textDescricao.dirty || textDescricao.touched)">
+                        </textarea>
+                    <div *ngIf="textDescricao.invalid && (textDescricao.dirty || textDescricao.touched)"
+                        class="invalid-feedback">
+                        <span *ngIf="textDescricao.errors.required">Digite uma breve descricao</span>
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="conteudo">Nome do grupo no AD</label>
-                    <input
-                      class="form-control" 
-                      id="descricao_do_grupo" 
-                      rows="2" 
-                      placeholder="nome do grupo no AD" name="conteudo"
-                      #conteudo="ngModel" 
-                      [(ngModel)]="nome_no_ad" 
-                      [class.is-invalid]="!conteudo.valid && conteudo.touched"
-                      required>
-                    <div *ngIf="!conteudo.valid && conteudo.touched" class="text-danger">
-                     Digite o nome do grupo no AD
+                    <label for="nome_ad">Nome do grupo no AD</label>
+                    <textarea type="nome_ad" class="form-control " placeholder="Nome do grupo no AD"
+                        name="nome_ad" #textNome_ad="ngModel" required [(ngModel)]="nome_no_ad"
+                        [class.is-invalid]="textNome_ad.invalid && (textNome_ad.dirty || textNome_ad.touched)">
+                        </textarea>
+                    <div *ngIf="textNome_ad.invalid && (textNome_ad.dirty || textNome_ad.touched)"
+                        class="invalid-feedback">
+                        <span *ngIf="textNome_ad.errors.required">Digite o nome do grupo no AD</span>
                     </div>
                   </div>
             

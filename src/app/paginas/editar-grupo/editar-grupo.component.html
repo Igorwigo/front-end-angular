@@ -11,56 +11,41 @@
           <div class="card-body">
            
             <form #f="ngForm" (ngSubmit)="atualizaGrupo()">
-                <div class="form-group">
-                  <label for="conteudo">Nome do Grupo</label>
-                  <input
-                  type="text" 
-                  class="form-control " 
-                  placeholder={{nomeAntigo}}
-                  name="username" 
-                  #textNomeNovo="ngModel" 
-                  required [(ngModel)]="nomeNovo"
-                  [class.is-invalid]="textNomeNovo.invalid && (textNomeNovo.dirty || textNomeNovo.touched)">
-                  
-                  <div *ngIf="textNomeNovo.invalid && (textNomeNovo.dirty || textNomeNovo.touched)"
-                  class="invalid-feedback">
-                  <span *ngIf="textNomeNovo.errors.required">Informe o nome</span>
-              </div>
+              <div class="form-group">
+                <label for="nome">Nome do grupo</label>
+                <input type="nome" class="form-control " placeholder={{nomeAntigo}}
+                    name="nome" #textNome="ngModel" required [(ngModel)]="nomeNovo"
+                    [class.is-invalid]="textNome.invalid && (textNome.dirty || textNome.touched)">
+                <div *ngIf="textNome.invalid && (textNome.dirty || textNome.touched)"
+                    class="invalid-feedback">
+                    <span *ngIf="textNome.errors.required">Informe o nome do Grupo</span>
                 </div>
+              </div>
+                 
 
-                <div class="form-group">
-                  <label for="conteudo">Descricao do Grupo</label>
-                  <input
-                  type="text" 
-                  class="form-control " 
-                  placeholder={{descricaoAntiga}}
-                  name="username" 
-                  #textDescricaoNova="ngModel" 
-                  required [(ngModel)]="descricaoNova"
-                  [class.is-invalid]="textDescricaoNova.invalid && (textDescricaoNova.dirty || textDescricaoNova.touched)">
-                  
-                  <div *ngIf="textDescricaoNova.invalid && (textDescricaoNova.dirty || textDescricaoNova.touched)"
-                  class="invalid-feedback">
-                  <span *ngIf="textDescricaoNova.errors.required">Informe a descricao</span>
-              </div>
-                </div>
-                <div class="form-group">
-                  <label for="conteudo">Nome do Grupo</label>
-                  <input
-                  type="text" 
-                  class="form-control " 
-                  placeholder={{nomeAntigo}}
-                  name="username" 
-                  #textNomeNovo="ngModel" 
-                  required [(ngModel)]="nomeNovo"
-                  [class.is-invalid]="textNomeNovo.invalid && (textNomeNovo.dirty || textNomeNovo.touched)">
-                  
-                  <div *ngIf="textNomeNovo.invalid && (textNomeNovo.dirty || textNomeNovo.touched)"
-                  class="invalid-feedback">
-                  <span *ngIf="textNomeNovo.errors.required">Informe o nome</span>
-              </div>
-                </div>
-            
+                  <div class="form-group">
+                    <label for="descricao">Descricao do grupo</label>
+                    <textarea maxlength="535" type="descricao" class="form-control " placeholder={{descricaoAntiga}}
+                        name="descricao" #textDescricao="ngModel" required [(ngModel)]="descricaoNova"
+                        [class.is-invalid]="textDescricao.invalid && (textDescricao.dirty || textDescricao.touched)">
+                        </textarea>
+                    <div *ngIf="textDescricao.invalid && (textDescricao.dirty || textDescricao.touched)"
+                        class="invalid-feedback">
+                        <span *ngIf="textDescricao.errors.required">Digite uma breve descricao</span>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="nome_ad">Nome do grupo no AD</label>
+                    <textarea type="nome_ad" class="form-control " placeholder={{nome_ad_antigo}}
+                        name="nome_ad" #textNome_ad="ngModel" required [(ngModel)]="nome_ad_novo"
+                        [class.is-invalid]="textNome_ad.invalid && (textNome_ad.dirty || textNome_ad.touched)">
+                        </textarea>
+                    <div *ngIf="textNome_ad.invalid && (textNome_ad.dirty || textNome_ad.touched)"
+                        class="invalid-feedback">
+                        <span *ngIf="textNome_ad.errors.required">Digite o nome do grupo no AD</span>
+                    </div>
+                  </div>
+
                 <button class="btn btn-primary btn-sm ml-1" type="submit" [disabled]="!f.valid">Salvar</button>
                 <button type="button" class="btn btn-danger btn-sm ml-1" routerLink="/protected/grupos" >Cancelar</button>
               </form>

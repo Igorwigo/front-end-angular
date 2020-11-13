@@ -60,16 +60,12 @@ export class EditarGrupoComponent implements OnInit{
     const r = window.confirm("Tem certeza que deseja salvar?");
     if (r){
     this.apiservice.atualizaGrupo(this.pegaToken(),this.nomeAntigo,this.nomeNovo,this.descricaoNova,this.nome_ad_novo).subscribe(
-      () => { this.router.navigateByUrl('/protected/grupos'); },
+      (retorno)=> {this.tratamento(retorno)},
       ()=>this.errorMsgComponent.setError('Falha ao atualizar o grupo'),
     );
     }
   }
-  
-  logout(): void {
-    localStorage.removeItem('Token');
-    this.router.navigate(['/login']);
-  }
+
   pegaToken(){
 
     this.pegatoken=localStorage.getItem('Token');
@@ -96,6 +92,28 @@ export class EditarGrupoComponent implements OnInit{
       
     }
 
+  }
+  tratamento(r){
+
+    console.log(r)
+    if (r["Status"]=="Ocorreu um erro ao inserir"){
+
+      this.errorMsgComponent.setError('Falha ao criar o Grupo verifique o nome e tente novamente')
+    }
+
+    else if(r["Status"]=="Grupo Atualizado"){
+      this.router.navigate(['/protected/grupos'])
+
+    }
+
+    else if(r["Status"]=="sem permissao"){
+      this.errorMsgComponent.setError('Falha ao criar o Grupo secao expirada')
+
+    }
+    else if(r["Status"]=="Grupo nao encontrado no AD"){
+      this.errorMsgComponent.setError('Grupo nao encontrado no AD');
+
+    }
   }
 
 
