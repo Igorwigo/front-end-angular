@@ -1,3 +1,4 @@
+import { UsuariosComponent } from './paginas/gerenciaUsuarios/usuarios/usuarios.component';
 import { EditarGrupoComponent } from './paginas/editar-grupo/editar-grupo.component';
 import { CriarGruposComponent } from './paginas/criar-grupos/criar-grupos.component';
 import { GruposComponent } from './paginas/grupos/grupos.component';
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'protected/grupos', component: GruposComponent},
   {path: 'protected/criar/grupo', component: CriarGruposComponent},
   {path: 'protected/editar/grupo/:nome', component: EditarGrupoComponent},
+  {path: 'protected/main/users', component: UsuariosComponent},
 
 
   

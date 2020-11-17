@@ -40,7 +40,7 @@ export class MenuPrincipalComponent implements OnInit {
     this.router.navigate(['/protected/grupos']);
   }
   ir_usuarios(){
-    //this.router.navigate(['/protected/grupos']);
+    this.router.navigate(['/protected/main/users']);
   }
   permiteExibir(r): void{
 
