@@ -6,18 +6,26 @@
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" >
 
-<div class="col-sm-6 my-5 mx-auto">
+<div class="col-sm-5 my-5 mx-auto">
+  <app-error-msg></app-error-msg>
     <div class="input-group">
-      <input class="form-control" type="search" placeholder="Pesquisar">
+      <input class="form-control" type="search" [(ngModel)]="usuario" placeholder="Pesquisar"#textUsuario="ngModel" required [class.is-invalid]="textUsuario.invalid && (textUsuario.dirty || textUsuario.touched)">
+
       <div class="input-group-append">
         <div class="input-group-text" (click)="atualiza()"><i class="fas fa-search"></i></div>
       </div>
+      <div *ngIf="textUsuario.invalid && (textUsuario.dirty || textUsuario.touched)"
+      class="invalid-feedback">
+      <span *ngIf="textUsuario.errors.required">Informe seu nome de usuário</span>
+  </div>
     </div>
+
+    
   </div>
 
 
 <div class="row mt-5"  >
-    <div class="col-md-6 mx-auto">
+    <div class="col-sm-5 my-5 mx-auto">
       <div class="card">
 
         <div class="card-body ">

@@ -62,4 +62,10 @@ export class ApiService {
     }
   
 
+    /* OPERACOES COM USUARIOS**/
+    pesquisa_usuario(usuario){
+      const data = {"Nome_usuario":usuario}
+      return this.http.post(this.API_ROOT.concat('busca/usuario'), data);
+    }
+
 }
