@@ -17,6 +17,7 @@ export class UsuariosComponent implements OnInit {
   usuario=""
 
   lista=[]
+  listaDisplayName=[]
 
 
 
@@ -41,17 +42,14 @@ export class UsuariosComponent implements OnInit {
 
 tratamento(d):void {
 
-  
-  console.log(d['Status'])
-
-
-
-
   if (d['Status']=="nao encontrado"){
-    this.errorMsgComponent.setError("Usuario nao encontrado");
-
+    this.errorMsgComponent.setError("Usuario nao encontrado verifique o campo digitado e tente novamente");
   }
 
+  if (d['Status']=="ok"){
+    this.lista=d['Nome']
+    this.listaDisplayName=d['DisplayName']
+  }
 
 /* 
    if (d['Status']=="ok"){

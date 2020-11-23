@@ -1,13 +1,13 @@
 import { ApiService } from './../../service/api.service';
 import { ErrorMsgComponent } from './../../compartilhado/error-msg/error-msg.component';
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit{
   @ViewChild(ErrorMsgComponent) errorMsgComponent: ErrorMsgComponent;
 
   constructor(private loginService: ApiService, private router: Router) { }
@@ -16,10 +16,16 @@ export class LoginComponent {
   senha = '';
 
  
+ngOnInit(){
 
+  this.logout();
+
+
+}
   logar(): void{
        this.loginService.postLogin(this.usuario, this.senha).subscribe(
       dados => {this.tratamento(dados)},
+      ()=>this.errorMsgComponent.setError('Falha! tente novamente mais tarde'),
     );
 
 
@@ -47,5 +53,12 @@ export class LoginComponent {
     }
 
 }
+
+
+logout(): void {
+  localStorage.removeItem('Token');
+}
+
+
 }
 

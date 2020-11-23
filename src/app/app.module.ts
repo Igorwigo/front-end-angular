@@ -18,6 +18,7 @@ import { FooterComponent } from './compartilhado/footer/footer.component';
 import { SessaoExpiradaComponent } from './compartilhado/sessao-expirada/sessao-expirada.component';
 import { UsuariosComponent } from './paginas/gerenciaUsuarios/usuarios/usuarios.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
