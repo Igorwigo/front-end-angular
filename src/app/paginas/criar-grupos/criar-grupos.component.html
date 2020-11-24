@@ -5,8 +5,8 @@
       <div class="col-md-8 mx-auto">
         <app-error-msg></app-error-msg>
         <div class="card">
-          <div class="card-header">
-            Criar
+          <div class="card-header text-center">
+            <h2>Criar</h2>
           </div>
           <div class="card-body">
            
@@ -36,10 +36,10 @@
                   </div>
                   <div class="form-group">
                     <label for="nome_ad">Nome do grupo no AD</label>
-                    <textarea type="nome_ad" class="form-control " placeholder="Nome do grupo no AD"
+                    <input type="nome_ad" class="form-control " placeholder="Nome do grupo no AD"
                         name="nome_ad" #textNome_ad="ngModel" required [(ngModel)]="nome_no_ad"
                         [class.is-invalid]="textNome_ad.invalid && (textNome_ad.dirty || textNome_ad.touched)">
-                        </textarea>
+                        
                     <div *ngIf="textNome_ad.invalid && (textNome_ad.dirty || textNome_ad.touched)"
                         class="invalid-feedback">
                         <span *ngIf="textNome_ad.errors.required">Digite o nome do grupo no AD</span>

@@ -39,7 +39,7 @@ export class CriarGruposComponent implements OnInit{
 
       if (r["Status"]=="Ocorreu um erro ao inserir"){
 
-        this.errorMsgComponent.setError('Falha ao criar o Grupo verifique o nome e tente novamente')
+        this.errorMsgComponent.setError('Falha ao criar o Grupo verifique se já existe e tente novamente')
       }
 
       else if(r["Status"]=="Grupo Criado"){
