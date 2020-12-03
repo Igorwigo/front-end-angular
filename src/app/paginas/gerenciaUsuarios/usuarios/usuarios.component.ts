@@ -33,6 +33,7 @@ export class UsuariosComponent implements OnInit {
   pesquisa_usuario(): void{
     this.loginService.pesquisa_usuario(this.usuario).subscribe(
    dados => {this.tratamento(dados)},
+   ()=>this.errorMsgComponent.setError('Falha na comunicação com a api!'),
  );
 
 

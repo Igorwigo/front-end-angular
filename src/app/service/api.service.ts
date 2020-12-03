@@ -42,7 +42,7 @@ export class ApiService {
 
   deleta_grupo_banco(nome:String,token){ 
     const data = {"Nome": nome,"Token":token}
-    return this.http.post(this.API_ROOT.concat('/deleta/grupo/banco'), data);
+    return this.http.post(this.API_ROOT.concat('deleta/grupo/banco'), data);
 
   }
 
