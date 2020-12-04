@@ -2,6 +2,7 @@ import { ErrorMsgComponent } from './../../../compartilhado/error-msg/error-msg.
 import { Router } from '@angular/router';
 import { ApiService } from './../../../service/api.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { NONE_TYPE } from '@angular/compiler';
 
 @Component({
   selector: 'app-usuarios',
@@ -36,15 +37,14 @@ export class UsuariosComponent implements OnInit {
    ()=>this.errorMsgComponent.setError('Falha na comunicação com a api!'),
  );
 
-
-
-
 }
 
 tratamento(d):void {
 
   if (d['Status']=="nao encontrado"){
     this.errorMsgComponent.setError("Usuario nao encontrado verifique o campo digitado e tente novamente");
+    this.lista=d[''];
+    this.listaDisplayName=d[''];
   }
 
   if (d['Status']=="ok"){

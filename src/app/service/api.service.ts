@@ -67,5 +67,8 @@ export class ApiService {
       const data = {"Nome_usuario":usuario}
       return this.http.post(this.API_ROOT.concat('busca/usuario'), data);
     }
-
+    busca_memberof(usuario){
+      const data = {"Nome_usuario":usuario}
+      return this.http.post(this.API_ROOT.concat('busca/memberof'), data);
+    }
 }

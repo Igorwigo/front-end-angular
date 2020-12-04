@@ -1,3 +1,4 @@
+import { EditarUsuariosComponent } from './paginas/gerenciaUsuarios/editar-usuarios/editar-usuarios.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -18,7 +19,6 @@ import { FooterComponent } from './compartilhado/footer/footer.component';
 import { SessaoExpiradaComponent } from './compartilhado/sessao-expirada/sessao-expirada.component';
 import { UsuariosComponent } from './paginas/gerenciaUsuarios/usuarios/usuarios.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,6 +33,7 @@ import { UsuariosComponent } from './paginas/gerenciaUsuarios/usuarios/usuarios.
     FooterComponent,
     SessaoExpiradaComponent,
     UsuariosComponent,
+    EditarUsuariosComponent,
   ],
   imports: [
     BrowserModule,

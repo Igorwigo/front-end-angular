@@ -8,6 +8,7 @@
 
 <div class="col-sm-5 my-5 mx-auto">
   <app-error-msg></app-error-msg>
+  <h3 class="text-center">Pesquisa de Usuario</h3>
     <div class="input-group">
       <input class="form-control" type="search" [(ngModel)]="usuario" placeholder="Pesquisar"#textUsuario="ngModel" required [class.is-invalid]="textUsuario.invalid && (textUsuario.dirty || textUsuario.touched)">
 
@@ -34,8 +35,7 @@
         </div>
         <div class="card-footer">
           <div class="text-right">
-            <button type="button" class="btn btn-primary btn-sm ml-1" routerLink="/protected/editar/grupo/{{user}}" >Editar</button>
-
+            <button type="button" class="btn btn-primary btn-sm ml-1" routerLink="/protected/editar/user/{{user}}" >Editar</button> 
           </div>
         </div>
       </div>
