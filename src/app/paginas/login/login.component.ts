@@ -10,7 +10,12 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit{
   @ViewChild(ErrorMsgComponent) errorMsgComponent: ErrorMsgComponent;
 
-  constructor(private loginService: ApiService, private router: Router) { }
+  sitekey: string;
+
+  constructor(private loginService: ApiService, private router: Router) { 
+    this.sitekey='6LcEMf0ZAAAAAIfZ1ZprWizHeQDhPHHURt5lLENo';
+
+  }
 
   usuario = '';
   senha = '';

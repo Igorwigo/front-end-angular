@@ -18,6 +18,7 @@ import { NavBarComponent } from './compartilhado/nav-bar/nav-bar.component';
 import { FooterComponent } from './compartilhado/footer/footer.component';
 import { SessaoExpiradaComponent } from './compartilhado/sessao-expirada/sessao-expirada.component';
 import { UsuariosComponent } from './paginas/gerenciaUsuarios/usuarios/usuarios.component';
+import { NgxCaptchaModule } from 'ngx-captcha';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { UsuariosComponent } from './paginas/gerenciaUsuarios/usuarios/usuarios.
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    NgxCaptchaModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
