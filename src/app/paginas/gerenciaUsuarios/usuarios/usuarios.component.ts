@@ -12,17 +12,18 @@ import { NONE_TYPE } from '@angular/compiler';
 export class UsuariosComponent implements OnInit {
   @ViewChild(ErrorMsgComponent) errorMsgComponent: ErrorMsgComponent;
 
-  constructor(private loginService: ApiService, private router: Router) { }
+  constructor(private apiservice:ApiService, private router: Router) { }
   booleanExibir=true;
   booleanExibirRetorno=false;
-  usuario=""
-
-  lista=[]
-  listaDisplayName=[]
+  usuario="";
+  pegatoken="";
+  lista=[];
+  listaDisplayName=[];
 
 
 
   ngOnInit(): void {
+    this.verificaToken();
   }
 
   atualiza(){
@@ -31,13 +32,42 @@ export class UsuariosComponent implements OnInit {
 
   }
 
+  verificaToken(){
+    this.apiservice.verificaToken(this.pegaToken()).subscribe(
+      (retorno)=> {this.trataRetornoToken(retorno)},
+      ()=>this.errorMsgComponent.setError('Falha ao buscar os grupos'),
+    );
+  }
+
+
+
   pesquisa_usuario(): void{
-    this.loginService.pesquisa_usuario(this.usuario).subscribe(
+    this.apiservice.pesquisa_usuario(this.usuario,this.pegaToken()).subscribe(
    dados => {this.tratamento(dados)},
    ()=>this.errorMsgComponent.setError('Falha na comunicação com a api!'),
  );
 
 }
+
+  trataRetornoToken(r){
+    if(r['Status']=='Acesso concedido' ){
+      this.booleanExibir=true;
+      this.booleanExibirRetorno=false;
+    }
+
+    else if(r['Status']=='Voce nao tem autorizacao!'){
+      this.booleanExibir=false;
+      this.booleanExibirRetorno=true;
+    }
+
+    else if(r['Status']=='Token invalido'){
+      this.booleanExibir=false;
+      this.booleanExibirRetorno=true;
+    }
+
+
+  }
+
 
 tratamento(d):void {
 
@@ -47,27 +77,21 @@ tratamento(d):void {
     this.listaDisplayName=d[''];
   }
 
-  if (d['Status']=="ok"){
+  else if (d['Status']=="ok"){
     this.lista=d['Nome']
     this.listaDisplayName=d['DisplayName']
   }
 
-/* 
-   if (d['Status']=="ok"){
-     localStorage.clear();
-     console.log("Login autorizado");
-     localStorage.setItem('Token', d['Token']);
-     this.router.navigate(['/protected/MainMenu']);
-   }
 
- else if (d['Status']=="Credenciais inválidas"){
-   this.errorMsgComponent.setError('Credenciais invalidas!!!');
 
- }
- else if (d['Status']=="Apenas usuarios ADMs sao permitidos"){
-   this.errorMsgComponent.setError('Apenas ADMs sao permitidos!!!');
 
- }
-**/
+}
+
+
+pegaToken(){
+
+  this.pegatoken=localStorage.getItem('Token');
+  return this.pegatoken
+
 }
 }

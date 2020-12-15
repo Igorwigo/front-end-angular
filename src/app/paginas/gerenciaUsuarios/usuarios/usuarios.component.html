@@ -1,7 +1,8 @@
-<div >
-    <app-nav-bar></app-nav-bar>
-</div>    
 
+
+<div *ngIf="booleanExibir">
+  <app-nav-bar></app-nav-bar>
+  
 
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" >
@@ -10,7 +11,7 @@
   <app-error-msg></app-error-msg>
   <h3 class="text-center">Pesquisa de Usuario</h3>
     <div class="input-group">
-      <input class="form-control" type="search" [(ngModel)]="usuario" placeholder="Pesquisar"#textUsuario="ngModel" required [class.is-invalid]="textUsuario.invalid && (textUsuario.dirty || textUsuario.touched)">
+      <input class="form-control" type="search" [(ngModel)]="usuario" placeholder="Pesquisar"#textUsuario="ngModel" required [class.is-invalid]="textUsuario.invalid && (textUsuario.dirty || textUsuario.touched)" (keyup.enter)="atualiza()" >
 
       <div class="input-group-append">
         <div class="input-group-text" (click)="atualiza()"><i class="fas fa-search"></i></div>
@@ -41,3 +42,9 @@
       </div>
     </div>
   </div>
+</div>
+
+
+<div *ngIf="booleanExibirRetorno === true">
+  <app-sessao-expirada></app-sessao-expirada>
+</div>

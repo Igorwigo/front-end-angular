@@ -1,50 +1,78 @@
+<div *ngIf="booleanExibir">
+<app-nav-bar></app-nav-bar>
+<app-error-msg></app-error-msg>
+<div class="container mt-3">
+<div class="col-lg-9 mt-4 mt-lg-0 mx-auto">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="text-right">
+        <button class="btn btn-success btn-sm ml-1 mt-3" (click)="open(mymodal)">Adicionar grupo</button>
+      </div>
+        <form #f="ngForm" (ngSubmit)="atualizaUsuario()">
+        <div class="user-dashboard-info-box table-responsive mb-0 bg-white p-4 shadow-sm">
+          <table class="table manage-candidates-top mb-0">
+            <thead>
+              <tr>
+                <th>Grupos - {{nome}}</th>
+                <th class="action text-right">Ação</th>
 
-<div>
-    <app-nav-bar></app-nav-bar>
-  <div class="container mt-3">
-      <div class="row">
-        <div class="col-md-8 mx-auto">
-          <app-error-msg></app-error-msg>
-          <div class="card">
-            <div class="alert alert-dark text-center">
-              <h5>Usuario - {{nome}}</h5>
-            </div>
-            <div class="card-body">
-             
-              <form #f="ngForm" (ngSubmit)="atualizaUsuario()">
-                <div class="form-group">
-                  <h5 class="text-center">Grupos</h5>
+              </tr>
+              
+            </thead>
+            <tbody>
+              <tr class="candidates-list" *ngFor="let nome of lista ;let i = index">
+                <td class="title">
 
-                
-                   
-                <hr>
-                <div class="row mt-3" *ngFor="let nome of lista ;let i = index" >
-                  <div class="col-md-8 mx-auto">
-                    <div class="card">
+                    <h5 class="candidate-list-title mb-0">{{nome}}</h5>
 
-                      <div class="card-body">
-                        <strong><p class="card-text">{{nome}}</p></strong>
-                      </div>
-                      <div class="card-footer">
-                        <div class="text-right">
-                          <button type="button" class="btn btn-warning btn-sm ml-1" (click)="atualizaUsuario(nome)" >Deletar</button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-                  <button class="btn btn-primary btn-sm ml-1" type="submit" [disabled]="!f.valid">Salvar</button>
-                  <button type="button" class="btn btn-danger btn-sm ml-1" routerLink="/protected/grupos" >Cancelar</button>
-                </form>
   
-            </div>
-          </div>
+                </td>
+                <td class="text-right">
+                  <button type="button" class="btn btn-warning btn-sm ml-1" (click)="atualizaUsuario(nome)" >Deletar</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
         </div>
+        <div class="text-left mt-3">        
+          <button class="btn btn-primary btn-sm ml-1" type="submit" [disabled]="!f.valid">Salvar</button>
+          <button type="button" class="btn btn-danger btn-sm ml-1" routerLink="/protected/main/users" >Cancelar</button>
+        </div>
+
+      </form>
       </div>
     </div>
   </div>
+</div>
 
+   
+<ng-template #mymodal let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title " id="modal-basic-title">Adicionar grupo</h4>
+    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">×</span>
+    </button>
+  </div>
+
+  <div class="modal-body" *ngFor="let grupos of listaNomeG ;let i = index">
+    <hr>
+    <h5> {{grupos}}</h5>
+    <label >
+      {{listaDescricaoG[i]}}
+  </label>
+  <hr>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Ok</button>
+  </div>
+</ng-template>
 
 
 <app-footer></app-footer>
+
+</div>
+
+<div *ngIf="booleanExibirRetorno === true">
+  <app-sessao-expirada></app-sessao-expirada>
+</div>

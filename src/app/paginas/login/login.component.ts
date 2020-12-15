@@ -45,6 +45,7 @@ ngOnInit(){
         localStorage.clear();
         console.log("Login autorizado");
         localStorage.setItem('Token', d['Token']);
+        localStorage.setItem('1 acesso', "sim");
         this.router.navigate(['/protected/MainMenu']);
       }
 

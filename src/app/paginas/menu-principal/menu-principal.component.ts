@@ -2,6 +2,10 @@ import { ErrorMsgComponent } from './../../compartilhado/error-msg/error-msg.com
 import { ApiService } from './../../service/api.service';
 import { Router } from '@angular/router';
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { NgbActiveModal, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
+
+
+
 
 @Component({
   selector: 'app-menu-principal',
@@ -11,11 +15,16 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 export class MenuPrincipalComponent implements OnInit {
   @ViewChild(ErrorMsgComponent) errorMsgComponent: ErrorMsgComponent;
 
-  constructor(private apiservice: ApiService,private router: Router) { }
+  constructor(private apiservice: ApiService,private router: Router, config: NgbModalConfig,private modalService: NgbModal) {
+    config.backdrop = 'static';
+    config.keyboard = false;
+
+   }
 
   booleanExibir=false;
   booleanExibirRetorno=false;
-
+  pegatoken="";
+  acesso="";
 
   ngOnInit(): void {
     
@@ -26,16 +35,10 @@ export class MenuPrincipalComponent implements OnInit {
     
   }
 
-
-
-  pegaToken=localStorage.getItem('Token');
-  
-
-
-  logout(): void {
-    localStorage.removeItem('Token');
-    this.router.navigate(['/login']);
+  open(content) {
+    this.modalService.open(content);
   }
+
   ir_sistemas(){
     this.router.navigate(['/protected/grupos']);
   }
@@ -60,6 +63,13 @@ export class MenuPrincipalComponent implements OnInit {
       this.booleanExibirRetorno=true;
       
     }
+
+  }
+
+  pegaToken(){
+
+    this.pegatoken=localStorage.getItem('Token');
+    return this.pegatoken
 
   }
 

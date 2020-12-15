@@ -19,6 +19,7 @@ import { FooterComponent } from './compartilhado/footer/footer.component';
 import { SessaoExpiradaComponent } from './compartilhado/sessao-expirada/sessao-expirada.component';
 import { UsuariosComponent } from './paginas/gerenciaUsuarios/usuarios/usuarios.component';
 import { NgxCaptchaModule } from 'ngx-captcha';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { NgxCaptchaModule } from 'ngx-captcha';
     HttpClientModule,
     FormsModule,
     NgxCaptchaModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

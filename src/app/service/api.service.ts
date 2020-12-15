@@ -63,12 +63,12 @@ export class ApiService {
   
 
     /* OPERACOES COM USUARIOS**/
-    pesquisa_usuario(usuario){
-      const data = {"Nome_usuario":usuario}
+    pesquisa_usuario(usuario,token){
+      const data = {"Nome_usuario":usuario,"Token":token}
       return this.http.post(this.API_ROOT.concat('busca/usuario'), data);
     }
-    busca_memberof(usuario){
-      const data = {"Nome_usuario":usuario}
+    busca_memberof(usuario,token){
+      const data = {"Nome_usuario":usuario,"Token":token}
       return this.http.post(this.API_ROOT.concat('busca/memberof'), data);
     }
 }
