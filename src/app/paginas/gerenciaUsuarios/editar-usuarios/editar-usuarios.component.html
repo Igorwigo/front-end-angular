@@ -6,15 +6,15 @@
     <div class="row">
       <div class="col-md-12">
         <div class="text-right">
-        <button class="btn btn-success btn-sm ml-1 mt-3" (click)="open(mymodal)">Adicionar grupo</button>
+        <button class="btn btn-success btn-sm ml-1 mt-3" tooltip="Adicionar grupo ao usuario" placement="left"(click)="open(mymodal)">Adicionar grupo</button>
       </div>
         <form #f="ngForm" (ngSubmit)="atualizaUsuario()">
-        <div class="user-dashboard-info-box table-responsive mb-0 bg-white p-4 shadow-sm">
+        <div class="card user-dashboard-info-box table-responsive mb-0 bg-white p-4 shadow-sm">
           <table class="table manage-candidates-top mb-0">
             <thead>
               <tr>
-                <th>Grupos - {{nome}}</th>
-                <th class="action text-right">Ação</th>
+                <th >Grupos - {{nome}}</th>
+                <th class="action text-center">Ação</th>
 
               </tr>
               
@@ -27,8 +27,8 @@
 
   
                 </td>
-                <td class="text-right">
-                  <button type="button" class="btn btn-warning btn-sm ml-1" (click)="atualizaUsuario(nome)" >Deletar</button>
+                <td class="text-center">
+                  <button type="button" class="btn btn-warning btn-sm ml-1" tooltip="Deletar grupo" (click)="atualizaUsuario(nome)" >Deletar</button>
                 </td>
               </tr>
             </tbody>

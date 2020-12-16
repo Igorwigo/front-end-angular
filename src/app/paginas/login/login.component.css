@@ -1,18 +1,13 @@
-
-
 .card-signin {
   border: 0;
   border-radius: 2rem;
-  box-shadow: 0 0.5rem 1rem 0 rgba(29, 22, 121, 0.288);
+  box-shadow: 0 0.5rem 1rem 0 rgba(0, 0, 0, 0.288);
 }
 
 
 .card-signin .card-body {
   padding: 2rem;
 }
-
-
-
 
 
 .form-label-group>label {

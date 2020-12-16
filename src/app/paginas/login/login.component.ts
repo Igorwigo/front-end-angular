@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit{
   sitekey: string;
 
   constructor(private loginService: ApiService, private router: Router) { 
-    this.sitekey='6LcEMf0ZAAAAAIfZ1ZprWizHeQDhPHHURt5lLENo';
+    
 
   }
 

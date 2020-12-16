@@ -19,24 +19,32 @@ export class MenuPrincipalComponent implements OnInit {
     config.backdrop = 'static';
     config.keyboard = false;
 
-   }
 
+   }
+   
   booleanExibir=false;
   booleanExibirRetorno=false;
-  pegatoken="";
+  primeiroacesso=false;
   acesso="";
-
+  
   ngOnInit(): void {
     
-    this.apiservice.verificaToken(this.pegaToken).subscribe(
+    this.apiservice.verificaToken(this.pegatoken()).subscribe(
      retorno => {this.permiteExibir(retorno)},
    );
 
-    
+   if(this.pega_primeiro_acesso()=="sim"){
+
+    this.primeiroacesso=true
+    localStorage.setItem('1 acesso', "nao");
+  }
   }
 
   open(content) {
-    this.modalService.open(content);
+
+      this.modalService.open(content);
+    
+    
   }
 
   ir_sistemas(){
@@ -65,14 +73,17 @@ export class MenuPrincipalComponent implements OnInit {
     }
 
   }
+  pega_primeiro_acesso(){
 
-  pegaToken(){
+    return localStorage.getItem('1 acesso');
 
-    this.pegatoken=localStorage.getItem('Token');
-    return this.pegatoken
-
+    
   }
 
+pegatoken(){
+
+  return localStorage.getItem('Token');
+}
 
 }
 
