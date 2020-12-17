@@ -20,7 +20,7 @@ import { SessaoExpiradaComponent } from './compartilhado/sessao-expirada/sessao-
 import { UsuariosComponent } from './paginas/gerenciaUsuarios/usuarios/usuarios.component';
 import { NgxCaptchaModule } from 'ngx-captcha';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { AlertModule } from 'ngx-bootstrap/alert';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,6 +45,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     NgxCaptchaModule,
     NgbModule,
     TooltipModule.forRoot(),
+    AlertModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

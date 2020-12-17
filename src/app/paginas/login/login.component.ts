@@ -45,8 +45,18 @@ ngOnInit(){
         localStorage.clear();
         console.log("Login autorizado");
         localStorage.setItem('Token', d['Token']);
-        localStorage.setItem('1 acesso', "sim");
+
         this.router.navigate(['/protected/MainMenu']);
+
+        
+    if(this.pega_primeiro_acesso()=="nao"){
+    }
+      else{
+        localStorage.setItem('1 acesso', "sim");
+
+      }
+
+
       }
 
     else if (d['Status']=="Credenciais inválidas"){
@@ -64,7 +74,12 @@ ngOnInit(){
 logout(): void {
   localStorage.removeItem('Token');
 }
+pega_primeiro_acesso(){
 
+  return localStorage.getItem('1 acesso');
+
+  
+}
 
 }
 

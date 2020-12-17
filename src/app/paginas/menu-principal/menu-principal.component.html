@@ -6,13 +6,15 @@
 <app-error-msg></app-error-msg>
 <div *ngIf="booleanExibir">
 <div class="pricing-header px-2 py-2 pt-md-5 pb-md-4 mx-auto text-center">
-  <div class="mx-auto text-right">  
-    <button class="btn btn-success" (click)="open(content)">Informações</button>
-  </div>
-  <h1 class="display-4">Menu</h1>
-  <p class="lead">Escolha a opcao desejada</p>
-  
 
+  <h1 class="">Menu</h1>
+  <div *ngIf="primeiroacesso===true">
+  <alert type="success" [dismissible]="dismissible" (onClosed)="onClosed($event)" >
+    <h4 class="alert-heading">Bem vindo!</h4>
+    <p>Este sistema tem como objetivo controlar permissões envolvendo aplicações da SEGIT, que estão no na pasta GrupoAplicacoes do AD(Active Directory)</p>
+    <p class="mb-0"><strong> Escolha a opcao desejada.</strong></p>
+ </alert>
+</div>
 </div>
 
 <div class="container">
@@ -42,23 +44,8 @@
 </div>
 <app-footer></app-footer>
 
+ 
 
-<ng-template #content let-c="close" let-d="dismiss" >
-
-  <div class="modal-header" >
-    <h4 class="modal-title" id="modal-basic-title">Hi there!</h4>
-    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="modal-body">
-    <p>Hello, World!</p>
-  </div>
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
-  </div>
-
-</ng-template>
 
 
 

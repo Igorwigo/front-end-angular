@@ -10,14 +10,13 @@ import { NgbActiveModal, NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-boots
 @Component({
   selector: 'app-menu-principal',
   templateUrl: './menu-principal.component.html',
-  styleUrls: ['./menu-principal.component.css']
+  styleUrls: ['./menu-principal.component.css'],
+
 })
 export class MenuPrincipalComponent implements OnInit {
   @ViewChild(ErrorMsgComponent) errorMsgComponent: ErrorMsgComponent;
 
   constructor(private apiservice: ApiService,private router: Router, config: NgbModalConfig,private modalService: NgbModal) {
-    config.backdrop = 'static';
-    config.keyboard = false;
 
 
    }
@@ -25,8 +24,8 @@ export class MenuPrincipalComponent implements OnInit {
   booleanExibir=false;
   booleanExibirRetorno=false;
   primeiroacesso=false;
-  acesso="";
-  
+  dismissible = true;
+
   ngOnInit(): void {
     
     this.apiservice.verificaToken(this.pegatoken()).subscribe(
@@ -35,17 +34,13 @@ export class MenuPrincipalComponent implements OnInit {
 
    if(this.pega_primeiro_acesso()=="sim"){
 
-    this.primeiroacesso=true
+    this.primeiroacesso=true;
     localStorage.setItem('1 acesso', "nao");
   }
+
   }
 
-  open(content) {
-
-      this.modalService.open(content);
-    
-    
-  }
+  
 
   ir_sistemas(){
     this.router.navigate(['/protected/grupos']);
@@ -85,5 +80,8 @@ pegatoken(){
   return localStorage.getItem('Token');
 }
 
+public onClosed($event) {
+
+}
 }
 
