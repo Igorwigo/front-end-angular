@@ -16,10 +16,13 @@ export class EditarUsuariosComponent implements OnInit {
   lista=[];
   booleanExibir=false;
   booleanExibirRetorno=false;
-  listaNomeG = [];
+  
+  listaVisual=[]
+  listaAdd=[]
+  listaDeleta=[]
   listaDescricaoG=[];
-
-
+  msg="";
+  vazio=false;
   closeResult: string;
   
   pegatoken="";
@@ -34,6 +37,7 @@ export class EditarUsuariosComponent implements OnInit {
 
    ngOnInit(): void {
     this.get_todos_banco();
+
     
   }
 
@@ -46,12 +50,14 @@ export class EditarUsuariosComponent implements OnInit {
   }
 
   lista_todos(r){    
+
   
     if(r['Status']=='Acesso concedido' ){
       this.booleanExibir=true;
       this.booleanExibirRetorno=false;
-      this.listaNomeG=r["Nomes"];
+      this.lista=r["Nomes"];
       this.listaDescricaoG=r["Descricoes"];
+      
     }
 
     else if(r['Status']=='Voce nao tem autorizacao!'){
@@ -90,14 +96,12 @@ export class EditarUsuariosComponent implements OnInit {
     if(r['Status']=='ok' ){
       this.booleanExibir=true;
       this.booleanExibirRetorno=false;
-      this.lista=r["Lista"]
+      this.listaVisual=r["Lista"]
     }
-    else{
-
-
+    if(r["Lista"]==0 ){
+      this.errorMsgComponent.setError('Nenhuma permissão disponivel para este usuário!')
+      
     }
-
-
 
   }
 
@@ -134,6 +138,43 @@ export class EditarUsuariosComponent implements OnInit {
   }
 
 
+  addgrupo(nome){
 
+
+    try{
+      const index1 = this.listaVisual.indexOf(nome, 0);
+      const index2 = this.lista.indexOf(nome, 0);
+      
+      if(this.lista.length!=0){
+        if(this.lista[index2]==this.listaVisual[index1]){      
+          this.lista.splice(index1, 1);}
+        }
+        else{
+          this.mensagem("Grupo vazio");
+        }
+      }    
+
+
+
+
+    catch(Exception ){
+
+      console.log(Exception)
+
+    }
+
+
+  }
+
+  mensagem(msg):void{
+
+    this.msg=msg;
+    this.vazio=true;
+    setTimeout(() => {
+      this.msg = null;
+      this.vazio=false;
+    }, 2500);
+
+  }
 
 }
